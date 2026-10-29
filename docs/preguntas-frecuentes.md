@@ -62,13 +62,13 @@ Una vez compilado, el binario se encuentra en `build/bin/`. Para ejecutarlo:
 **Linux y macOS:**
 
 ```bash
-./build/bin/ChuspaPulse
+./build/bin/pulso
 ```
 
 **Windows:**
 
 ```text
-build\bin\Release\ChuspaPulse.exe
+build\bin\Release\pulso.exe
 ```
 
 ---
@@ -106,10 +106,10 @@ CMake funciona en Windows, Linux y macOS, genera archivos de compilación autom�
 
 ```cmake
 cmake_minimum_required(VERSION 3.16)
-project(ChuspaPulse LANGUAGES CXX)
+project(pulso LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-add_executable(ChuspaPulse main.cpp)
+add_executable(pulso main.cpp)
 ```
 
 ¿Cómo agrego un nuevo archivo .cpp al proyecto?
@@ -117,7 +117,7 @@ add_executable(ChuspaPulse main.cpp)
 Edita el archivo CMakeLists.txt:
 
 ```cmake
-add_executable(ChuspaPulse
+add_executable(pulso
     main.cpp
     monitoreo.cpp
     nuevo_archivo.cpp
@@ -157,8 +157,6 @@ clang-format -i archivo.cpp
 
 ```bash
 cd build && ctest -R "NombreDeLaPrueba" -V
-# O directamente:
-./build/tests/ChuspaPulse-tests --gtest_filter=NombreClase.NombrePrueba
 ```
 
 ¿Qué es una fuga de memoria y cómo revisarla?
@@ -166,7 +164,7 @@ cd build && ctest -R "NombreDeLaPrueba" -V
 Ocurre si reservas memoria y no la liberas:
 
 ```bash
-valgrind --leak-check=full ./build/bin/ChuspaPulse
+valgrind --leak-check=full ./build/bin/pulso
 ```
 
 ¿Cómo limpiar y recompilar todo desde cero?
@@ -180,5 +178,5 @@ rm -rf build && mkdir build && cd build && cmake .. && cmake --build .
 En CMakeLists.txt:
 
 ```cmake
-target_compile_options(ChuspaPulse PRIVATE -Wall -Wextra -pedantic -O2)
+target_compile_options(pulso PRIVATE -Wall -Wextra -pedantic -O2)
 ```
